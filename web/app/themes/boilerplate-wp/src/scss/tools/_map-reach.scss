@@ -1,0 +1,14 @@
+/// Get values from nested maps
+/// @group tools
+/// @author Hugo Giraudel
+/// @link https://goo.gl/Fbzuq1 Deep Get/Set in Maps
+/// @param {map} $map Map
+/// @param {arglist} $keys Key chain
+/// @return {*}
+
+@function map-reach($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

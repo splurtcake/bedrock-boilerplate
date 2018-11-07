@@ -1,0 +1,43 @@
+/// Set a fluid font size range within a viewport width range
+/// @group tools
+/// @author Joshua Russell
+/// @link http://goo.gl/RT0ffR Precise control over responsive typography
+/// @param {number} $min-vw Minimum viewport width
+/// @param {number} $max-vw Maximum viewport width
+/// @param {number} $min-value Minimum `$property` value
+/// @param {number} $max-value Maximum `$property` value
+/// @param {string} $property [font-size] Property to apply values to
+/// @example scss SCSS
+///   html {
+///     @include fluid-type(320px, 1366px, 14px, 18px);
+///   }
+/// @example css CSS
+///   html {
+///     font-size: 14px;
+///   }
+///
+///   @media screen and (min-width: 320px) {
+///     html {
+///       font-size: calc(14px + 4 * ((100vw - 320px) / 1046));
+///     }
+///   }
+///
+///   @media screen and (min-width: 1366px) {
+///     html {
+///       font-size: 18px;
+///     }
+///   }
+
+@mixin responsive-type($min-vw, $max-vw, $min-value, $max-value, $property: font-size) {
+  & {
+    #{$property}: $min-value;
+
+    @media screen and (min-width: $min-vw) {
+      #{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+    }
+
+    @media screen and (min-width: $max-vw) {
+      #{$property}: $max-value;
+    }
+  }
+}

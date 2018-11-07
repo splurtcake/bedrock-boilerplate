@@ -1,0 +1,11 @@
+html {
+  @include responsive-type(320px, 1440px, 14px, 18px, font-size);
+  font-family: $helvetica;
+  height: 100%;
+}
+
+body {
+  background: blue;
+  color: $mineshaft;
+  text-rendering: optimizeLegibility;
+}

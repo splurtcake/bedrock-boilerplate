@@ -1,0 +1,41 @@
+/// Maintain element's aspect ratio at scaling widths
+/// @group tools
+/// @author Indrek Paas
+/// @link http://goo.gl/0p3yck Sizing Fluid Image Containers with a Little CSS Padding Hack
+/// @param {number} $ratio [16/9] Aspect ratio
+/// @param {string} $position [relative] Position property
+/// @param {string} $descendant ["*"] Descendant element
+/// @example scss SCSS
+///   div {
+///     @include aspect-ratio;
+///   }
+/// @example css CSS
+///   div {
+///     display: block;
+///     height: 0;
+///     padding-top: 56.25%;
+///     position: relative;
+///   }
+///
+///   div > * {
+///     height: 100%;
+///     left: 0;
+///     position: absolute;
+///     top: 0;
+///     width: 100%;
+///   }
+
+@mixin aspect-ratio($ratio: 16/9, $position: relative, $descendant: "*") {
+  display: block;
+  height: 0;
+  padding-top: percentage(1 / $ratio);
+  position: $position;
+
+  > #{$descendant} {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}

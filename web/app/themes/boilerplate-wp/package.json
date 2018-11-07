@@ -1,0 +1,38 @@
+{
+  "name": "boilerplate",
+  "author": "Joshua Russell <joshuarussell@me.com>",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp build"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.32",
+    "@babel/preset-env": "^7.0.0-beta.32",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.5.0",
+    "connect-history-api-fallback": "^1.5.0",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-minify": "^2.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sass": "^2.0.3",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-uglify": "^3.0.1",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "flickity-imagesloaded": "^2.0.0",
+    "gsap": "^1.20.4",
+    "what-input": "^5.0.3"
+  }
+}

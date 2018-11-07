@@ -1,0 +1,14 @@
+/// Strip unit from a value
+/// @group tools
+/// @author Hugo Giraudel
+/// @link http://goo.gl/9ZRCy8 A couple of Sass functions
+/// @param {number} $value Value
+/// @return {number}
+/// @example scss SCSS
+///   line-height: strip-unit(1.5em);
+/// @example css CSS
+///   line-height: 1.5;
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}

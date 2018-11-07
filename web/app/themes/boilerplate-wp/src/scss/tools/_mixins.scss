@@ -1,0 +1,84 @@
+@mixin shiny-link($color: $black, $hover-color: #ccc) {
+  $timing: cubic-bezier(.19,1,.22,1);
+  $in-duration: 1s;
+  $out-duration: .75s;
+
+  overflow: hidden;
+  display: block;
+  text-decoration: none;    
+  color: $color;
+  height: inherit;
+  position: relative;
+
+  &:hover {
+    > span {
+      animation: in-layer $in-duration $timing forwards;
+
+      &:before {
+        animation: in-text $in-duration $timing forwards;
+      }
+    }
+  }
+
+  > span {
+    display: block;
+    backface-visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: inherit;
+    overflow: hidden;
+    transform: translate3d(-100%, 0, 0);
+    animation: out-layer $out-duration $timing forwards;
+
+    &:before {
+      width: 100%;
+      display: block;
+      backface-visibility: hidden;
+      content: attr(data-text);
+      transform: translate3d(100%, 0, 0);
+      color: $hover-color;
+      animation: out-text $out-duration $timing forwards;
+    }
+  }
+  
+  @keyframes in-text {
+    from { transform: translate3d(100%, 0, 0); }
+    to { transform: translateZ(0); }
+  }
+
+  @keyframes in-layer {
+    from { transform: translate3d(-100%, 0, 0); }
+    to { transform: translateZ(0); }
+  }
+
+  @keyframes out-text {
+    from { transform: translateZ(0); }
+    to { transform: translate3d(-100%, 0, 0); }
+  }
+
+  @keyframes out-layer {
+    from { transform: translateZ(0); }
+    to { transform: translate3d(100%, 0, 0);}
+  }
+}
+
+
+@mixin grow-border-link($colour: $black, $y: 0, $thickness: 1px) {
+  display: inline-block;
+
+  &:after {
+    background: $colour;
+    content: "";
+    display: block;
+    height: $thickness;
+    transform-origin: left;
+    transform: scaleX(0) translatey($y);
+    transition: transform .75s $ease-out-expo;
+    width: 100%;
+  }
+
+  &:hover::after {
+    transform: scaleX(1) translatey($y);
+  }
+}
